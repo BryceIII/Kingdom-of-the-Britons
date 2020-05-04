@@ -1,0 +1,57 @@
+k_briton = {
+		color={ 135 25 3 }
+		color2={ 255 255 255 }
+		
+		capital = 26 # Winchester
+
+		title = "high_king"
+		title_female = "high_queen"
+		
+		culture = Briton
+		
+		catholic = 300 # Crusade target weight
+
+		welsh = "Brythoniaid"
+		pictish = "Brythoniaid"
+		Briton = "Brythoniaid"
+		breton = "Kembre"
+		irish = "Bhreatain Bheag"
+		roman = Demetia
+		
+		allow = {
+		conditional_tooltip = {
+			trigger = {
+				k_briton = {
+					is_titular = yes
+				}
+			}
+			k_briton = {
+				is_titular = no
+			}
+		}
+	}
+	}
+k_cumbria = {
+		color = { 44 175 255 }
+		color2={ 255 255 255 }
+		
+		capital = 53 # Cumberland
+
+		
+		culture = Cumbric
+		
+		catholic = 300 # Crusade target weight
+		
+		allow = {
+		conditional_tooltip = {
+			trigger = {
+				k_cumbria = {
+					is_titular = yes
+				}
+			}
+			k_cumbria = {
+				is_titular = no
+			}
+		}
+	}
+	}

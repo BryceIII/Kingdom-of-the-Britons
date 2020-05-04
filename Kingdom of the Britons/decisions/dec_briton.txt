@@ -1,0 +1,355 @@
+##Create Kingdom of the Britons
+decisions = {
+	 form_briton = {
+         is_high_prio = yes
+         potential = { 
+		   tier = king
+		   has_landed_title = k_wales
+		   NOT = { has_global_flag = kingdom_briton_formed }
+		   OR = {
+		      culture = welsh
+			  culture = breton
+			  culture = Briton
+			  }
+			primary_title = { title = k_wales }
+		   
+  
+		}
+		allow = {
+		     AND = {
+			     prestige = 5000
+				 completely_controls = k_wales
+				 completely_controls = k_england
+			}
+		}
+		effect = { 
+		         set_global_flag = kingdom_briton_formed
+		         grant_title_no_opinion = k_briton
+				 culture = Briton
+				 destroy_landed_title = k_england
+				 destroy_landed_title = k_wales
+				 give_nickname = nick_the_great
+				 k_briton = { de_jure_liege = e_britannia }
+				 c_shrewsbury = { de_jure_liege = d_powys }
+				 c_hereford = { de_jure_liege = d_powys }
+				 d_northumberland = { de_jure_liege = k_briton }
+				 d_cumbria = { de_jure_liege = k_briton }
+				 d_lancaster = { de_jure_liege = k_briton }
+				 d_york = { de_jure_liege = k_briton }
+				 d_norfolk = { de_jure_liege = k_briton }
+				 d_bedford = { de_jure_liege = k_briton }
+				 d_hereford = { de_jure_liege = k_briton }
+				 d_gloucester = { de_jure_liege = k_briton }
+				 d_canterbury = { de_jure_liege = k_briton }
+				 d_somerset = { de_jure_liege = k_briton }
+				 d_hampshire = { de_jure_liege = k_briton }
+				 d_durham_palatine = { de_jure_liege = k_briton }
+				 d_gwynedd = { de_jure_liege = k_briton }
+				 d_powys = { de_jure_liege = k_briton }
+				 d_deheubarth = { de_jure_liege = k_briton }
+				 d_gwent = { de_jure_liege = k_briton }
+				 d_cornwall = { de_jure_liege = k_briton }
+				 create_bloodline = {
+				    type = king_of_the_britons
+					}
+				if = {
+				limit = {
+					completely_controls = k_brittany 
+					}
+					 d_loire = { de_jure_liege = k_briton }
+					 d_brittany = { de_jure_liege = k_briton }
+					 d_penthievre = { de_jure_liege = k_briton }
+					  destroy_landed_title = k_brittany
+					}
+				 k_briton = { copy_title_laws = PREV }
+
+		
+		}
+		
+	
+		
+     }
+	 convert_to_briton = {
+         is_high_prio = yes
+		only_playable = yes
+		
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 60
+		
+		potential = {
+			is_playable = yes
+			OR = {
+				culture = welsh
+				culture = breton
+			}
+			capital_scope = {
+				region = custom_britons
+			}
+			has_global_flag = kingdom_briton_formed
+			}
+			NOT = { government = chinese_imperial_government }
+			NOT = {
+				has_alternate_start_parameter = { key = culture_names value = random }
+			}
+		allow = {
+			culture = welsh
+		}
+		effect = {
+			culture = Briton
+			any_courtier = {
+				limit = {
+					culture = Briton
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = Briton
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+			
+			modifier = {
+				factor = 0.01
+				capital_scope = {
+					NOT = { culture = Briton }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { culture = Briton }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					culture = Briton
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					culture = Briton
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					culture = Briton
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					culture = Briton
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					culture = Briton
+				}
+			}
+		}
+	}
+	 restore_ancient_borders = {
+         is_high_prio = yes
+         potential = { 
+		   NOT = { has_global_flag = ancient_briton_borders }
+		   has_landed_title = k_briton
+		   culture = Briton
+		   
+  
+		}
+		allow = {
+		     AND = {
+			     prestige = 200
+			     wealth = 500
+				 completely_controls = k_briton
+			}
+		}
+		effect = { 
+				 c_shrewsbury = { de_jure_liege = d_powys }
+				 c_lancaster = { de_jure_liege = d_cumbria }
+				 c_worcester = { de_jure_liege = d_powys }
+				 c_hereford = { de_jure_liege = d_powys }
+				 c_devon = { de_jure_liege = d_somerset }
+				 c_chester = { de_jure_liege = d_gwynedd }
+				 c_derby = { de_jure_liege = d_hereford }
+				 destroy_landed_title = d_lancaster
+		         set_global_flag = ancient_briton_borders
+
+		
+		}
+		
+	
+		
+     }
+	 
+	 ###cumbric
+	 ##Create Kingdom of Cumbria
+	 form_hen_ogledd = {
+         is_high_prio = yes
+         potential = { 
+			tier = duke
+		   OR = {
+				has_landed_title = d_cumbria
+				has_landed_title = d_northumberland
+				has_landed_title = d_lothian
+				has_landed_title = d_galloway
+				has_landed_title = d_york
+			}
+		   NOT = { has_global_flag = kingdom_cumbria_formed }
+		   OR = {
+		      culture = welsh
+			  culture = Briton
+			  }
+  
+		}
+		allow = {
+		     AND = {
+			     prestige = 5000
+				 independent = yes
+				 completely_controls = d_cumbria
+				 completely_controls = d_northumberland
+				 completely_controls = d_lothian
+				 completely_controls = d_galloway
+			}
+		}
+		effect = { 
+		         set_global_flag = kingdom_cumbria_formed
+		         grant_title_no_opinion = k_cumbria
+				 culture = Cumbric
+				 give_nickname = nick_the_great
+				 k_cumbria = { de_jure_liege = e_britannia }
+				 d_cumbria = { de_jure_liege = k_cumbria }
+				 d_northumberland = { de_jure_liege = k_cumbria }
+				 d_lothian = { de_jure_liege = k_cumbria }
+				 d_galloway = { de_jure_liege = k_cumbria }
+				 c_lancaster = { de_jure_liege = d_cumbria }
+				 c_chester = { de_jure_liege = d_gwynedd }
+				 c_derby = { de_jure_liege = d_hereford }
+				if = {
+				limit = {
+					completely_controls = d_york 
+					}
+					 d_york = { de_jure_liege = k_cumbria }
+					}
+				 k_cumbria = { copy_title_laws = PREV }
+
+		
+		}
+		
+	
+		
+     }
+	 
+	 convert_to_cumbric = {
+         is_high_prio = yes
+		only_playable = yes
+		
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 60
+		
+		potential = {
+			is_playable = yes
+			OR = {
+				culture = welsh
+				culture = Briton
+			}
+			capital_scope = {
+				region = custom_cumbric
+			}
+			has_global_flag = kingdom_cumbria_formed
+			}
+			NOT = { government = chinese_imperial_government }
+			NOT = {
+				has_alternate_start_parameter = { key = culture_names value = random }
+			}
+		allow = {
+			OR = {
+				culture = welsh
+				culture = Briton
+			}
+		}
+		effect = {
+			culture = Cumbric
+			any_courtier = {
+				limit = {
+					culture = Cumbric
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = Cumbric
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+			
+			modifier = {
+				factor = 0.01
+				capital_scope = {
+					NOT = { culture = Cumbric }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { culture = Cumbric }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					culture = Cumbric
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					culture = Cumbric
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					culture = Cumbric
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					culture = Cumbric
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					culture = Cumbric
+				}
+			}
+		}
+	}
+	}
